@@ -1,0 +1,231 @@
+#include <iostream>
+#include <conio.h>
+#include <cstdlib>
+using std::string;
+
+class StudentSignUpForm {
+private:
+	string userName;
+	string password;
+public:
+	void SetName(string username) {
+		std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~ Sign Up ~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+		std::cout << "" << std::endl;
+		userName = username;
+		std::cout << "Enter your username: ";
+		std::cin >> username;
+	}
+	string GetName() {
+		return userName;
+
+	}
+	void SetPassword(string password) {
+	reset:
+
+		char pass[32];
+		int i = 0;
+		char a;
+		password = password;
+		std::cout << "Enter your password: ";
+
+		for (i = 0;;)
+		{
+			a = _getch();
+			if ((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z') || (a >= '0' && a <= '9'))
+
+			{
+				pass[i] = a;
+				++i;
+				std::cout << "*";
+			}
+			if (a == '\b' && i >= 1)
+			{
+				std::cout << "\b \b";
+				--i;
+			}
+			if (a == '\r')
+			{
+				pass[i] = '\0';
+				break;
+			}
+		}
+		if (i <= 5) {
+			std::cout << "\nInvalid! Enter password must contain 6 digits" << std::endl;
+			_getch();
+			goto reset;
+		}
+		system("cls");
+	}
+	string GetPassword() {
+		return password;
+	}
+};
+class StudentInformation {
+public:
+	string studentName;
+	int studentAge;
+	string schoolGraduated;
+	string course;
+	double gwa;
+	int userChoices;
+
+	void MainMenu() {
+		system("cls");
+
+		std::cout << "\n\t 1.STUDENT PROFILE";
+		std::cout << "\n\t 2.SCHEDULE";
+		std::cout << "\n\t 3.OFFICERS";
+		std::cout << "\n\t 4.ACCOUNT";
+
+		std::cout << "\nEnter: ";
+		std::cin >> userChoices;
+
+		switch (userChoices) {
+		case 1:
+			StudentProfile();
+			break;
+		case 2:
+			Schedule();
+			break;
+		case 3:
+			Officers();
+			break;
+		case 4:
+			Acccount();
+			break;
+		}
+	}
+	void StudentProfile() {
+		system("cls");
+
+		StudentStoredInfo();
+
+		std::cout << "\n1.BACK";
+		std::cout << "\nEnter: ";
+		std::cin >> userChoices;
+
+		switch (userChoices) {
+		case 1:
+			MainMenu();
+			break;
+		}
+	}
+	void Schedule() {
+		system("cls");
+
+		std::cout << "\t\t~~~~~~~~~~ STUDENT SCHEDULE ~~~~~~~~~~~~";
+		std::cout << "\n\t _________________________________________________________________________";
+		std::cout << "\n\t  | SUBJECT			|UNITS| DAY | PROFERSSOR	        |";
+		std::cout << "\n\t  | COMPUTING			|  3  | FRI | PROF. BARRIOS		|";
+		std::cout << "\n\t  | PROGRAMMING			|  5  | THU | PROF. VILLAFUERTE		|";
+		std::cout << "\n\t  | DRAFTING			|  3  | THU | PROF. NIEVAS		|";
+		std::cout << "\n\t  | UNDERSTANDING SELF		|  3  | SUN | PROF. BATALLA		|";
+		std::cout << "\n\t  | MATH MODERN WORLD		|  3  | FRI | PROF. GERONIMO		|";
+		std::cout << "\n\t  | MOVEMENT TRAINING		|  2  | MON | PROF. RIVERA		|";
+		std::cout << "\n\t  | NSTP (CWTS)1		|  3  | FRI | PROF. CAMUS		|";
+		std::cout << "\n\t__________________________________________________________________________";
+
+		std::cout << "\n1.BACK";
+		std::cout << "\nEnter: ";
+		std::cin >> userChoices;
+
+		switch (userChoices) {
+		case 1:
+			MainMenu();
+			break;
+		}
+	}
+	void Officers() {
+		std::cout << "\t~~~~~~~~~~ CLASS OFFICERS ~~~~~~~~~~~~";
+
+		std::cout << "\n\n\n\t PRESIDENT: KRISTOPHER DIMSON"
+			<< "\n\t VICE PRESIDENT: MARK JAMES HUTALLA "
+			<< "\n\t SECRETARY: IRISH JADE VIDAL"
+			<< "\n\t TREASURER: SINO KA NIJAINTRAHCIAO#7741?";
+
+		std::cout << "\n1.BACK";
+		std::cout << "\nEnter: ";
+		std::cin >> userChoices;
+
+		switch (userChoices) {
+		case 1:
+			MainMenu();
+			break;
+		}
+	}
+	void Acccount() {
+		std::cout << "\t~~~~~~~~~~ STUDENT SETTINGS ~~~~~~~~~~~~";
+	}
+	void Return() {
+		std::cout << "\t~~~~~~~~~~ STUDENT PROFILE ~~~~~~~~~~~~" << std::endl;
+		std::cout << "\n\n\n\tName: " << studentName << std::endl;
+		std::cout << "\tAge: " << studentAge << std::endl;
+		std::cout << "\tPrefer course: " << course << std::endl;
+		std::cout << "\tSchool Graduated: " << schoolGraduated << std::endl;
+		std::cout << "\tGeneral weight average: " << gwa << std::endl;
+
+		std::cout << "\n\t 1.Main Menu";
+		std::cout << "\nEnter: ";
+		std::cin >> userChoices;
+
+		switch (userChoices) {
+		case 1:
+			MainMenu();
+		}
+	}
+	void StudentMenu() {
+		std::cout << "Name: " << studentName << std::endl;
+		std::cin >> studentName;
+		std::cout << "Age: " << studentAge << std::endl;
+		std::cin >> studentAge;
+		std::cout << "Prefer course: " << course << std::endl;
+		std::cin >> course;
+		std::cout << "School Graduated: " << schoolGraduated << std::endl;
+		std::cin >> schoolGraduated;
+		std::cout << "General weight average: " << gwa << std::endl;
+		std::cin >> gwa;
+
+		system("cls");
+
+		std::cout << "\t~~~~~~~~~~ STUDENT INFORMATION ~~~~~~~~~~~~" << std::endl;
+		std::cout << "\n\n\n\tName: " << studentName << std::endl;
+		std::cout << "\tAge: " << studentAge << std::endl;
+		std::cout << "\tPrefer course: " << course << std::endl;
+		std::cout << "\tSchool Graduated: " << schoolGraduated << std::endl;
+		std::cout << "\tGeneral weight average: " << gwa << std::endl;
+
+			std::cout << "\n\n\n\n\t 1.Main Menu";
+			std::cout << "\n\t 2.BACK";
+			std::cout << "\nEnter: ";
+			std::cin >> userChoices;
+
+			switch (userChoices) {
+			case 1:
+				MainMenu();
+			}
+	}
+	void StudentStoredInfo() {
+		std::cout << "\t~~~~~~~~~~ STUDENT INFORMATION ~~~~~~~~~~~~" << std::endl;
+		std::cout << "\n\n\n\tName: " << studentName << std::endl;
+		std::cout << "\tAge: " << studentAge << std::endl;
+		std::cout << "\tPrefer course: " << course << std::endl;
+		std::cout << "\tSchool Graduated: " << schoolGraduated << std::endl;
+		std::cout << "\tGeneral weight average: " << gwa << std::endl;
+	}
+	StudentInformation(string studentName, int studentAge, string course, string schoolGraduated, double gwa) {
+		this->studentName = studentName;
+		this->studentAge = studentAge;
+		this->course = course;
+		this->schoolGraduated = schoolGraduated;
+		this->gwa = gwa;
+	}
+};
+int main() {
+	StudentSignUpForm signup;
+	signup.SetName("");
+	signup.SetPassword("");
+
+	StudentInformation studentinfo = StudentInformation("",NULL, "", "",NULL);
+	studentinfo.StudentMenu();
+	
+}
